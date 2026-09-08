@@ -1,1 +1,15 @@
-{"name":"BeparyTech Arcade","short_name":"BT Arcade","start_url":"./","display":"standalone","background_color":"#061225","theme_color":"#061225","icons":[]}
+{
+  "name":"BeparyTech Arcade Kids",
+  "short_name":"BT Arcade",
+  "description":"Giochi educativi e divertenti per bambini dai 3 ai 10 anni.",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"any",
+  "background_color":"#061225",
+  "theme_color":"#061225",
+  "icons":[
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

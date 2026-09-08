@@ -1,7 +1,16 @@
-MOTO RUSH REAL v1
+MOTO RUSH REAL v2
 
-Carica tutti i file direttamente nella root del repository GitHub Pages.
+NOVITÀ:
+- cambio corsia con swipe destra/sinistra direttamente sul gioco
+- curva stradale dinamica e prospettiva coerente
+- traffico che può cambiare corsia
+- passaggi rasenti con bonus
+- GAS e BRAKE
+- inclinazione della moto durante lo spostamento
+- audio motore con tonalità legata alla velocità
+- bordi pista, cordoli, paletti, alberi e maggiore sensazione di velocità
+- effetti turbo, scarico, frenata e movimento
+- rampe, salto, monete, combo, livelli, checkpoint, vite e record
+
+Carica tutti i file direttamente nella root di GitHub Pages.
 Nessuna cartella.
-
-Gameplay: 3 corsie, traffico, monete e combo, rampe, salto, turbo, freno, livelli/checkpoint, vite, collisioni, punteggio, record locale, controlli touch e audio.
-Consigliato in orizzontale su iPhone.

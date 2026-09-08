@@ -1,43 +1,19 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#061225">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="BT Arcade">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="description" content="BeparyTech Arcade: giochi educativi e divertenti per bambini dai 3 ai 10 anni.">
-<title>BeparyTech Arcade Kids Deluxe</title>
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#11172b">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>BeparyTech Kids Arcade</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand"><div class="brandIcon">🎮</div><div><small>BEPARYTECH</small><b>ARCADE <span>KIDS</span></b></div></div>
-  <div class="topActions"><button id="installBtn" class="install" hidden>⬇️ Installa</button><button id="soundBtn" aria-label="Attiva o disattiva suoni">🔊</button><button id="themeBtn" aria-label="Cambia tema">☀️</button></div>
-</header>
+<header><div><b>🎮 BeparyTech Kids</b><small>ARCADE • giochi veri</small></div><button id="sound">🔊</button></header>
 <main>
-  <section class="hero">
-    <div class="heroText"><span class="pill">3–10 ANNI • GRATIS • NIENTE PUBBLICITÀ</span><h1>Gioca, impara,<br><em>divertiti!</em></h1><p>Più di 30 giochi veri, a schermo intero, con voci, suoni, corse, musica, disegno e giochi personalizzati. Funzionano su iPhone, iPad, Android e PC.</p><div class="heroBtns"><button class="primary" id="startBtn">🎮 Scegli un gioco</button><button id="howInstall">📱 Metti nella Home</button></div></div>
-    <div class="heroArt"><div class="planet">⭐</div><div class="float f1">🧩</div><div class="float f2">🚗</div><div class="float f3">🐼</div><div class="float f4">🔢</div><div class="controller">🎮</div></div>
-  </section>
-
-  <section class="filters" id="gamesSection"><div><h2>🎮 Tutti i giochi</h2><p>Scegli in base all'età. Ogni gioco si apre a schermo intero.</p></div><div class="filterRow"><button class="chip active" data-age="all">Tutti</button><button class="chip" data-age="3-5">3–5 anni</button><button class="chip" data-age="6-8">6–8 anni</button><button class="chip" data-age="9-10">9–10 anni</button></div></section>
-  <section class="gameGrid" id="gameGrid"></section>
-
-  <section class="safe"><div>🛡️</div><div><h3>Spazio sicuro per bambini</h3><p>Nessun account, nessuna chat, nessun acquisto e nessuna pubblicità. I record restano solo sul dispositivo.</p></div></section>
+<section class="hero"><div><span class="pill">3–10 ANNI</span><h1>Gioca, impara,<br><em>divertiti!</em></h1><p>10 giochi più completi, con livelli, suoni, voce, record e controlli touch.</p></div><div class="mascot">🚀</div></section>
+<div class="filters"><button class="active" data-f="all">Tutti</button><button data-f="action">Azione</button><button data-f="creative">Creativi</button><button data-f="learning">Impara</button><button data-f="family">Speciali</button></div>
+<section id="grid" class="grid"></section>
 </main>
-<footer><b>BeparyTech Arcade Kids</b><span>Play • Learn • Smile 💙</span></footer>
-
-<dialog id="gameDialog">
-  <div class="gameHead"><div><small id="gameAge"></small><h2 id="gameTitle"></h2></div><div class="gameHeadBtns"><button id="restartGame" aria-label="Ricomincia">↻</button><button id="closeGame" aria-label="Chiudi">✕</button></div></div>
-  <div id="gameArea"></div>
-</dialog>
-
-<dialog id="installDialog" class="infoDialog"><div class="gameHead"><h2>📱 Aggiungi alla schermata Home</h2><button class="closeInfo">✕</button></div><div class="infoBody"><p><b>Su iPhone/iPad:</b> apri il sito in Safari → premi <b>Condividi</b> → <b>Aggiungi alla schermata Home</b> → Aggiungi.</p><p><b>Su Android:</b> apri il menu del browser → <b>Installa app</b> oppure <b>Aggiungi a schermata Home</b>.</p><p>Dopo l'installazione si aprirà come una vera app, senza la barra normale del browser.</p></div></dialog>
+<div id="game" class="overlay hidden"><div class="gamebar"><button id="back">← Esci</button><b id="title"></b><div><button id="restart">↻</button><button id="fs">⛶</button></div></div><div id="stage"></div></div>
 <script src="app.js"></script>
-</body></html>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js')</script></body></html>

@@ -1,1 +1,19 @@
-<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=./"><title>BeparyTech Arcade</title>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#11172b">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>BeparyTech Kids Arcade</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div><b>🎮 BeparyTech Kids</b><small>ARCADE • giochi veri</small></div><button id="sound">🔊</button></header>
+<main>
+<section class="hero"><div><span class="pill">3–10 ANNI</span><h1>Gioca, impara,<br><em>divertiti!</em></h1><p>10 giochi più completi, con livelli, suoni, voce, record e controlli touch.</p></div><div class="mascot">🚀</div></section>
+<div class="filters"><button class="active" data-f="all">Tutti</button><button data-f="action">Azione</button><button data-f="creative">Creativi</button><button data-f="learning">Impara</button><button data-f="family">Speciali</button></div>
+<section id="grid" class="grid"></section>
+</main>
+<div id="game" class="overlay hidden"><div class="gamebar"><button id="back">← Esci</button><b id="title"></b><div><button id="restart">↻</button><button id="fs">⛶</button></div></div><div id="stage"></div></div>
+<script src="app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js')</script></body></html>

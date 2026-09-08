@@ -22,6 +22,33 @@ const GAMES=[
 ["farm","Fattoria Felice","adventure","Animali e suoni reali!","fattoria"]
 ].map(x=>({id:x[0],name:x[1],cat:x[2],desc:x[3],cover:x[4]}));
 
+const GAME_MEDIA={
+"moto-rush":{bg:"bg-moto-rush.jpg",music:"music-moto-rush.wav"},
+"nihal-dino":{bg:"bg-nihal-dino.jpg",music:"music-nihal-dino.wav"},
+"niha-rainbow":{bg:"bg-niha-rainbow.jpg",music:"music-niha-rainbow.wav"},
+"imad-balloon":{bg:"bg-imad-balloon.jpg",music:"music-imad-balloon.wav"},
+"colora-mondo":{bg:"bg-colora-mondo.jpg",music:"music-colora-mondo.wav"},
+"car-racing":{bg:"bg-car-racing.jpg",music:"music-car-racing.wav"},
+"super-goal":{bg:"bg-super-goal.jpg",music:"music-super-goal.wav"},
+"space-defender":{bg:"bg-space-defender.jpg",music:"music-space-defender.wav"},
+"memory-kids":{bg:"bg-memory-kids.jpg",music:"music-memory-kids.wav"},
+"math-heroes":{bg:"bg-math-heroes.jpg",music:"music-math-heroes.wav"},
+"puzzle-animali":{bg:"bg-puzzle-animali.jpg",music:"music-puzzle-animali.wav"},
+"piano-party":{bg:"bg-piano-party.jpg",music:"music-piano-party.wav"},
+"batteria-kids":{bg:"bg-batteria-kids.jpg",music:"music-batteria-kids.wav"},
+"pesca-felice":{bg:"bg-pesca-felice.jpg",music:"music-pesca-felice.wav"},
+"cucina":{bg:"bg-cucina.jpg",music:"music-cucina.wav"},
+"labirinto":{bg:"bg-labirinto.jpg",music:"music-labirinto.wav"},
+"disegnare":{bg:"bg-disegnare.jpg",music:"music-disegnare.wav"},
+"alfabeto":{bg:"bg-alfabeto.jpg",music:"music-alfabeto.wav"},
+"forme-colori":{bg:"bg-forme-colori.jpg",music:"music-forme-colori.wav"},
+"fattoria":{bg:"bg-fattoria.jpg",music:"music-fattoria.wav"}
+};
+let gameMusic=null;
+function startGameMusic(id){
+  try{ if(gameMusic){gameMusic.pause();gameMusic.src="";} const m=GAME_MEDIA[id]; if(!m||!soundOn)return; gameMusic=new Audio(m.music); gameMusic.loop=true; gameMusic.volume=.22; gameMusic.play().catch(()=>{}); }catch{}
+}
+function stopGameMusic(){try{if(gameMusic){gameMusic.pause();gameMusic.currentTime=0}}catch{} gameMusic=null;}
 const grid=document.querySelector("#gamesGrid"),overlay=document.querySelector("#gameOverlay"),stage=document.querySelector("#gameStage"),gameTitle=document.querySelector("#gameTitle"),toast=document.querySelector("#toast");
 let current=null,cleanup=()=>{},soundOn=true,deferredInstall=null;
 const S={coin:new Audio("audio-coin.wav"),win:new Audio("audio-win.wav"),hit:new Audio("audio-hit.wav"),jump:new Audio("audio-jump.wav"),pop:new Audio("audio-pop.wav"),goal:new Audio("audio-goal.wav"),shot:new Audio("audio-shot.wav"),wrong:new Audio("audio-wrong.wav"),bg:new Audio("audio-bg.wav")};
@@ -32,12 +59,12 @@ function showToast(t){toast.textContent=t;toast.classList.remove("hidden");setTi
 function render(cat="all"){grid.innerHTML=GAMES.filter(g=>cat==="all"||g.cat===cat).map(g=>`<article class="gameCard"><img src="cover-${g.cover}.jpg" alt="${g.name}"><span class="tag">${g.cat}</span><div class="info"><h3>${g.name}</h3><p>${g.desc}</p></div><button data-id="${g.id}" aria-label="Gioca a ${g.name}"></button></article>`).join("");grid.querySelectorAll("button[data-id]").forEach(b=>b.addEventListener("click",()=>openGame(b.dataset.id)))}
 render();
 document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{document.querySelector(".filters .active")?.classList.remove("active");b.classList.add("active");render(b.dataset.cat)});
-document.querySelector("#soundBtn").onclick=()=>{soundOn=!soundOn;document.querySelector("#soundBtn").textContent=soundOn?"🔊":"🔇";if(!soundOn){S.bg.pause();speechSynthesis?.cancel()}else S.bg.play().catch(()=>{})};
+document.querySelector("#soundBtn").onclick=()=>{soundOn=!soundOn;document.querySelector("#soundBtn").textContent=soundOn?"🔊":"🔇";if(!soundOn){S.bg.pause();stopGameMusic();speechSynthesis?.cancel()}else if(current&&GAMES.find(x=>x.id===current)){startGameMusic(GAMES.find(x=>x.id===current).cover)}};
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstall=e});
 document.querySelector("#installBtn").onclick=async()=>{if(deferredInstall){deferredInstall.prompt();deferredInstall=null}else showToast("iPhone: Condividi → Aggiungi alla schermata Home")};
 document.querySelector("#exitBtn").onclick=closeGame;document.querySelector("#restartBtn").onclick=()=>current&&openGame(current);document.querySelector("#fullBtn").onclick=()=>overlay.requestFullscreen?.().catch(()=>showToast("Apri dalla schermata Home per effetto app"));
-function closeGame(){cleanup();cleanup=()=>{};overlay.classList.add("hidden");stage.innerHTML="";speechSynthesis?.cancel()}
-function openGame(id){cleanup();cleanup=()=>{};current=id;let g=GAMES.find(x=>x.id===id);gameTitle.textContent=g.name;overlay.classList.remove("hidden");stage.innerHTML="";let fn={moto:()=>laneRace("🏍️","Moto Rush",true),car:()=>laneRace("🏎️","Car Racing",false),nihal:dino,niha:rainbow,imad:balloons,color:coloring,goal,space,memory,math,puzzle,piano,drums,fish,cook,maze,draw:trace,abc,shapes,farm}[id];if(fn)fn()}
+function closeGame(){cleanup();cleanup=()=>{};stopGameMusic();overlay.classList.add("hidden");stage.innerHTML="";stage.style.backgroundImage="";speechSynthesis?.cancel()}
+function openGame(id){cleanup();cleanup=()=>{};stopGameMusic();current=id;let g=GAMES.find(x=>x.id===id);gameTitle.textContent=g.name;overlay.classList.remove("hidden");stage.innerHTML="";let media=GAME_MEDIA[g.cover];if(media){stage.style.backgroundImage=`linear-gradient(#03101faa,#03101fee),url("${media.bg}")`;stage.style.backgroundSize="cover";stage.style.backgroundPosition="center";startGameMusic(g.cover)}let fn={moto:()=>laneRace("🏍️","Moto Rush",true),car:()=>laneRace("🏎️","Car Racing",false),nihal:dino,niha:rainbow,imad:balloons,color:coloring,goal,space,memory,math,puzzle,piano,drums,fish,cook,maze,draw:trace,abc,shapes,farm}[id];if(fn)fn()}
 function shell(withControls=true){stage.innerHTML=`<div class="gameShell"><div class="hud"><span id="score">⭐ 0</span><span id="status">❤️ 3</span></div><canvas class="canvas"></canvas>${withControls?`<div class="touch"><div class="dpad"><button class="up">▲</button><button class="left">◀</button><button class="down">▼</button><button class="right">▶</button></div><button class="fire">⚡</button></div>`:""}</div>`;let box=stage.firstElementChild,c=box.querySelector("canvas"),ctx=c.getContext("2d"),D=Math.min(devicePixelRatio||1,2);function resize(){let r=box.getBoundingClientRect();c.width=Math.max(1,r.width*D);c.height=Math.max(1,r.height*D);ctx.setTransform(D,0,0,D,0,0)}resize();return{box,c,ctx,w:()=>box.clientWidth,h:()=>box.clientHeight}}
 function laneRace(hero,title,moto){let {box,ctx,w,h}=shell(true),lane=1,score=0,lives=3,speed=5,objs=[],frame=0,raf=0,alive=true,jump=0;let left=box.querySelector(".left"),right=box.querySelector(".right"),fire=box.querySelector(".fire");left.onclick=()=>lane=Math.max(0,lane-1);right.onclick=()=>lane=Math.min(2,lane+1);fire.textContent=moto?"⬆️":"💨";fire.onclick=()=>{if(moto&&jump<=0){jump=65;snd("jump")}else speed=Math.min(9,speed+.7)};say(title+". Schiva gli ostacoli e raccogli le monete.");
 function loop(){if(!alive)return;let W=w(),H=h(),roadW=W*.72,x0=W*.14;ctx.clearRect(0,0,W,H);let sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,"#66c7ff");sky.addColorStop(.4,"#bce8ff");sky.addColorStop(.41,"#55a84c");sky.addColorStop(1,"#2f6e35");ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);ctx.fillStyle="#30343b";ctx.fillRect(x0,0,roadW,H);for(let i=1;i<3;i++){ctx.strokeStyle="#fff";ctx.lineWidth=4;ctx.setLineDash([28,28]);ctx.beginPath();ctx.moveTo(x0+i*roadW/3,(frame*speed)%56-56);ctx.lineTo(x0+i*roadW/3,H);ctx.stroke()}ctx.setLineDash([]);if(frame++%Math.max(28,52-Math.floor(score/35))===0)objs.push({lane:Math.floor(Math.random()*3),y:-40,t:Math.random()<.62?"🪙":(moto?"🚧":"🚙")});objs.forEach(o=>o.y+=speed);let hy=H-105-jump; if(jump>0)jump=Math.max(0,jump-4);let hx=x0+(lane+.5)*roadW/3;ctx.textAlign="center";ctx.font="54px serif";ctx.fillText(hero,hx,hy);ctx.font="38px serif";objs.forEach(o=>ctx.fillText(o.t,o.x=x0+(o.lane+.5)*roadW/3,o.y));objs=objs.filter(o=>{if(o.lane===lane&&Math.abs(o.y-hy)<45&&jump<28){if(o.t==="🪙"){score+=10;snd("coin")}else{lives--;snd("hit")}document.querySelector("#score").textContent="⭐ "+score;document.querySelector("#status").textContent="❤️ "+lives;if(lives<=0){alive=false;say("Partita finita. Punteggio "+score);setTimeout(()=>showToast("🏁 Punteggio "+score),100)}return false}if(o.y>H+50){if(o.t!=="🪙")score++;return false}return true});speed=Math.min(8.5,5+score/180);raf=requestAnimationFrame(loop)}loop();cleanup=()=>{alive=false;cancelAnimationFrame(raf)}}

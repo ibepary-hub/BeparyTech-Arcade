@@ -1,8 +1,21 @@
-BEPARYTECH ARCADE v5 - VERSIONE FLAT PER IPHONE
+BEPARYTECH ARCADE v6 MAX - VERSIONE IPHONE / GITHUB
 
-Carica TUTTI i file di questa cartella direttamente nella root del repository GitHub.
-Non creare cartelle.
-Sostituisci i file esistenti quando richiesto.
-Poi fai Commit changes.
+Questa versione è volutamente molto più grande:
+- 20 giochi
+- 20 sfondi Full HD 1920x1080
+- 20 colonne sonore stereo WAV dedicate (24 secondi ciascuna)
+- copertine, effetti, icone e PWA
+- nessuna cartella: tutti i file sono nella root
 
-I file cover-*.jpg e audio-*.wav devono essere caricati insieme agli altri.
+CARICAMENTO:
+1. Estrai questo ZIP su iPhone.
+2. GitHub > BeparyTech-Arcade > Add file > Upload files.
+3. Seleziona TUTTI i file estratti.
+4. Sostituisci i file esistenti.
+5. Commit changes.
+6. Attendi GitHub Pages e riapri l'app dalla schermata Home.
+
+IMPORTANTE:
+- non caricare lo ZIP direttamente;
+- non rinominare i file bg-*, cover-* o music-*;
+- ogni singolo file resta sotto il limite di upload web di GitHub.

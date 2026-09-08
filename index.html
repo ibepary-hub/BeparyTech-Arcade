@@ -1,47 +1,9 @@
-<!doctype html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#071633">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=6">
-<title>BeparyTech Arcade</title>
-</head>
-<body>
-<header class="top">
-  <div class="brand"><span>🎮</span><div><b>BeparyTech <i>ARCADE</i></b><small>Giochi, impara, divertiti!</small></div></div>
-  <div class="topBtns"><button id="soundBtn" aria-label="Audio">🔊</button><button id="installBtn" aria-label="Aggiungi alla Home">＋</button></div>
-</header>
-<main>
-<section class="hero">
-  <img src="arcade-hero.jpg" alt="BeparyTech Arcade">
-  <div class="heroShade"><span>3–10 ANNI</span><h1>Piccoli giochi.<br><em>Grandi sogni.</em></h1><p>20 giochi completi, controlli touch, voce italiana, musica, livelli e record.</p></div>
-</section>
-<nav class="filters">
-<button class="active" data-cat="all">🏠 Tutti</button>
-<button data-cat="action">🎮 Azione</button>
-<button data-cat="adventure">⛰️ Avventura</button>
-<button data-cat="learning">🎓 Educativi</button>
-<button data-cat="creative">🎨 Creativi</button>
-<button data-cat="sport">⚽ Sport</button>
-<button data-cat="special">⭐ Speciali</button>
-</nav>
-<section id="gamesGrid" class="grid"></section>
-</main>
-
-<section id="gameOverlay" class="overlay hidden" aria-label="Gioco">
-  <div class="gameTop">
-    <button id="exitBtn">← Esci</button>
-    <b id="gameTitle"></b>
-    <div><button id="restartBtn">↻</button><button id="fullBtn">⛶</button></div>
-  </div>
-  <div id="gameStage"></div>
-</section>
-<div id="toast" class="toast hidden"></div>
-<script src="app.js?v=6"></script>
-<script>if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js?v=6').catch(()=>{})}</script>
-</body></html>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#061221"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css?v=1"><title>Moto Rush</title></head><body>
+<div id="app"><canvas id="game"></canvas>
+<div id="start" class="screen"><div class="logo"><span>MOTO</span><b>RUSH</b></div><div class="tagline">Schiva. Salta. Usa il turbo. Vinci.</div><div class="stats"><div><small>Record</small><b id="best">0</b></div><div><small>Livello</small><b id="bestLevel">1</b></div></div><button id="play" class="primary">🏁 GIOCA</button><button id="how">Come si gioca</button><p class="hint">iPhone: ruota in orizzontale per l'esperienza migliore</p></div>
+<div id="hud" class="hidden"><div class="hudLeft"><div class="pill">🏁 <b id="level">1</b></div><div class="pill">⭐ <b id="score">0</b></div></div><div class="hudCenter"><div class="speed"><span id="speedNum">0</span><small>KM/H</small></div><div class="bar"><i id="progress"></i></div></div><div class="hudRight"><div class="pill">❤️ <b id="lives">3</b></div><button id="pause">Ⅱ</button></div></div>
+<div id="controls" class="hidden"><div class="steer"><button id="left">◀</button><button id="right">▶</button></div><div class="actions"><button id="brake">BRAKE</button><button id="jump">JUMP</button><button id="turbo">⚡ TURBO</button></div></div>
+<div id="message" class="banner hidden"></div>
+<div id="gameover" class="screen hidden"><h2>Gara finita</h2><div class="bigScore" id="finalScore">0</div><small>PUNTI</small><div class="stats"><div><small>Livello</small><b id="finalLevel">1</b></div><div><small>Record</small><b id="finalBest">0</b></div></div><button id="again" class="primary">↻ RIGIOCA</button><button id="home">Home</button></div>
+<div id="help" class="screen hidden"><h2>Come si gioca</h2><div class="helpGrid"><div>◀ ▶<span>Cambia corsia</span></div><div>JUMP<span>Salta rampe e ostacoli</span></div><div>⚡<span>Turbo temporaneo</span></div><div>BRAKE<span>Rallenta per evitare traffico</span></div></div><button id="closeHelp" class="primary">OK</button></div>
+</div><script src="game.js?v=1"></script><script>if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js?v=1').catch(()=>{});</script></body></html>

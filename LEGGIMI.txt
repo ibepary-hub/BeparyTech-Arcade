@@ -1,0 +1,7 @@
+MOTO RUSH REAL v1
+
+Carica tutti i file direttamente nella root del repository GitHub Pages.
+Nessuna cartella.
+
+Gameplay: 3 corsie, traffico, monete e combo, rampe, salto, turbo, freno, livelli/checkpoint, vite, collisioni, punteggio, record locale, controlli touch e audio.
+Consigliato in orizzontale su iPhone.

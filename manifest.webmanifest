@@ -1,1 +1,1 @@
-{"name": "BeparyTech Arcade", "short_name": "BT Arcade", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#061426", "theme_color": "#071633", "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}]}
+{"name":"Moto Rush","short_name":"Moto Rush","start_url":"./","scope":"./","display":"standalone","orientation":"landscape","background_color":"#050b14","theme_color":"#061221","icons":[]}

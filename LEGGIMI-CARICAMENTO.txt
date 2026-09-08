@@ -1,0 +1,8 @@
+BEPARYTECH ARCADE v5 - VERSIONE FLAT PER IPHONE
+
+Carica TUTTI i file di questa cartella direttamente nella root del repository GitHub.
+Non creare cartelle.
+Sostituisci i file esistenti quando richiesto.
+Poi fai Commit changes.
+
+I file cover-*.jpg e audio-*.wav devono essere caricati insieme agli altri.

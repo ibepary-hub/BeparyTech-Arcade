@@ -1,19 +1,47 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#11172b">
-<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>BeparyTech Kids Arcade</title><link rel="stylesheet" href="style.css?v=41">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#071633">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=5">
+<title>BeparyTech Arcade</title>
 </head>
 <body>
-<header><div><b>🎮 BeparyTech Kids</b><small>ARCADE • giochi veri</small></div><button id="sound">🔊</button></header>
+<header class="top">
+  <div class="brand"><span>🎮</span><div><b>BeparyTech <i>ARCADE</i></b><small>Giochi, impara, divertiti!</small></div></div>
+  <div class="topBtns"><button id="soundBtn" aria-label="Audio">🔊</button><button id="installBtn" aria-label="Aggiungi alla Home">＋</button></div>
+</header>
 <main>
-<section class="hero"><div><span class="pill">3–10 ANNI</span><h1>Gioca, impara,<br><em>divertiti!</em></h1><p>10 giochi più completi, con livelli, suoni, voce, record e controlli touch.</p></div><div class="mascot">🚀</div></section>
-<div class="filters"><button class="active" data-f="all">Tutti</button><button data-f="action">Azione</button><button data-f="creative">Creativi</button><button data-f="learning">Impara</button><button data-f="family">Speciali</button></div>
-<section id="grid" class="grid"></section>
+<section class="hero">
+  <img src="arcade-hero.jpg" alt="BeparyTech Arcade">
+  <div class="heroShade"><span>3–10 ANNI</span><h1>Piccoli giochi.<br><em>Grandi sogni.</em></h1><p>20 giochi completi, controlli touch, voce italiana, musica, livelli e record.</p></div>
+</section>
+<nav class="filters">
+<button class="active" data-cat="all">🏠 Tutti</button>
+<button data-cat="action">🎮 Azione</button>
+<button data-cat="adventure">⛰️ Avventura</button>
+<button data-cat="learning">🎓 Educativi</button>
+<button data-cat="creative">🎨 Creativi</button>
+<button data-cat="sport">⚽ Sport</button>
+<button data-cat="special">⭐ Speciali</button>
+</nav>
+<section id="gamesGrid" class="grid"></section>
 </main>
-<div id="game" class="overlay hidden"><div class="gamebar"><button id="back">← Esci</button><b id="title"></b><div><button id="restart">↻</button><button id="fs">⛶</button></div></div><div id="stage"></div></div>
-<script src="app.js?v=41"></script>
-<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js?v=41')</script></body></html>
+
+<section id="gameOverlay" class="overlay hidden" aria-label="Gioco">
+  <div class="gameTop">
+    <button id="exitBtn">← Esci</button>
+    <b id="gameTitle"></b>
+    <div><button id="restartBtn">↻</button><button id="fullBtn">⛶</button></div>
+  </div>
+  <div id="gameStage"></div>
+</section>
+<div id="toast" class="toast hidden"></div>
+<script src="app.js?v=5"></script>
+<script>if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js?v=5').catch(()=>{})}</script>
+</body></html>
